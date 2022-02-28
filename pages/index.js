@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import Stripe from 'stripe'
+import Header from '../components/Header'
+import { useAppContext } from '../context/CartContext'
 import styles from '../styles/Home.module.css'
 
 export async function getServerSideProps(context) {
@@ -21,7 +23,9 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function Home({prices}) {
+export default function Home({ prices }) {
+  const { products, setProducts } = useAppContext()
+
   return (
     <div className='flex flex-col min-h-screen'>
       <Head>
@@ -31,8 +35,9 @@ export default function Home({prices}) {
       </Head>
 
       <main className={styles.main}>
-        <i className="fa-brands fa-codepen"></i>
-
+        <Header />
+        <i className="fa-brands fa-codepen" onClick={() => setProducts([prices[0]])}></i>
+        
       </main>
 
       <footer className={styles.footer}>
