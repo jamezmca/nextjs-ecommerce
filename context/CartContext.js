@@ -1,9 +1,9 @@
-import Stripe from 'stripe'
 import { createContext, useContext, useState } from 'react';
 
 const AppContext = createContext();
 
-export function AppProvider({ children }) {
+export function AppWrapper({ children }) {
+  const [products, setProducts] = useState([])
   let sharedState = {/* whatever you want for example (and use it as state)
     todos,
     setTodos,
@@ -11,18 +11,29 @@ export function AppProvider({ children }) {
     updateTodos,
     deleteTodos,
     addTodods
-  */}
+    
+  */
+    products,
+    setProducts
+  }
 
-  const [products, setProducts] = useState([])
 
-  const refreshProducts = async () => {
-    try {
-      const res = await fetch('/fetchUrl')
-      const latestTodos = await res.json()
-      setProducts(latestTodos)
-    } catch (err) {
-      console.log(err)
-    }
+  // const refreshProducts = async () => { EXAMPLE
+  //   try {
+  //     const res = await fetch('/fetchUrl')
+  //     const latestTodos = await res.json()
+  //     setProducts(latestTodos)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+
+  function addProduct(newProduct) {
+
+  }
+
+  async function purchase() {
+
   }
 
   return (
@@ -33,7 +44,8 @@ export function AppProvider({ children }) {
 }
 
 //if not using useContent
-//export {AppProvider, AppContext}
+//export {AppProvider, AppContext} 
+//would then be like const {setTodos} = useContext()
 
 export function useAppContext() {
   return useContext(AppContext);
