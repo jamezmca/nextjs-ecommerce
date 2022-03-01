@@ -27,7 +27,8 @@ export default function Header() {
     return (
         // <div onClick={checkout}>{products.length}</div>
         <nav className='flex items-center white shadow sticky top-0 relative z-50 bg-white'>
-            <h1 className={'px-4 py-6 pl-14 font-normal select-none flex-1 text-center sm:text-4xl' + ` ${styles.title}`}>
+            <h1 onClick={() => Router.push('/')} 
+            className={'px-4 py-6 pl-14 font-normal select-none flex-1 text-center sm:text-4xl cursor-pointer transition hover:opacity-80 ' + ` ${styles.title}`}>
                 MOONGLADE
             </h1>
             <div className='relative cursor-pointer '>

@@ -39,7 +39,6 @@ export default function Home({ prices }) {
         <meta name="description" content="Nextjs ecommerce store" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
 
       <main className={styles.main}>
         {prices.map((price, index) => {
