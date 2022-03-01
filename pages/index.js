@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useEffect } from 'react'
 import Stripe from 'stripe'
-import Header from '../components/Header'
 import PurchaseCard from '../components/PurchaseCard'
 import { useAppContext } from '../context/CartContext'
 import styles from '../styles/Home.module.css'
@@ -26,11 +25,13 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ prices }) {
-  const { setPrices } = useAppContext()
+  const { dispatch } = useAppContext()
 
   useEffect(() => {
-    console.log('here')
-    setPrices(prices)
+    dispatch({
+      type: 'set_prices',
+      value: prices
+    })
   }, [prices])
 
   return (

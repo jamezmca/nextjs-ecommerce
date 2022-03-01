@@ -3,7 +3,7 @@ export const initialState = {
     products: []
 }
 
-export const AppReducer = (state, action) => {
+export const AppReducer = (state = initialState, action) => {
     switch (action.type) {
         case "add_product": {
             return {
@@ -17,11 +17,20 @@ export const AppReducer = (state, action) => {
                 products: state.products.filter(product => product.id !== action.value)
             }
         }
-        case "load_prices": {
+        case "load_items": {
+            return {
+                ...state,
+                prices: action.value.prices,
+                products: action.value.products
+            }
+        }
+        case "set_prices": {
             return {
                 ...state,
                 prices: action.value
             }
         }
+        default:
+            return state
     }
 }

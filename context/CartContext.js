@@ -1,28 +1,28 @@
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import localStorage from './localStorage'
+import { createContext, useContext, useEffect, useMemo, useState, useReducer } from 'react';
+import { AppReducer, initialState } from './AppReducer';
 
 const AppContext = createContext();
 
 export function AppWrapper({ children }) {
-  const [products, setProducts] = useState([JSON.parse(localStorage.getItem('moongladeCheckout'))] ?? [])
-  const [prices, setPrices] = useState([JSON.parse(localStorage.getItem('moongladeItems'))] ?? [])
+  const [state, dispatch] = useReducer(AppReducer, initialState)
+  const sharedState = useMemo(() => {
+    return { state, dispatch }
+  }, [state, dispatch])
 
-  let sharedState = useMemo(() => {
-    return {
-      products,
-      setProducts,
-      prices,
-      setPrices
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem('mg-items'))) {
+      dispatch({
+        type: "load_items",
+        value: JSON.parse(localStorage.getItem('mg-items'))
+      })
     }
-  }, [products, setProducts, prices, setPrices])
+  }, [])
 
   useEffect(() => {
-    localStorage.setItem('moongladeItems', JSON.stringify(prices))
-  }, [prices])
-
-  useEffect(() => {
-    localStorage.setItem('moongladeCheckout', JSON.stringify(prices))
-  }, [products])
+    if (state !== initialState) {
+      localStorage.setItem('mg-items', JSON.stringify(state))
+    }
+  }, [state])
 
   return (
     <AppContext.Provider value={sharedState}>
