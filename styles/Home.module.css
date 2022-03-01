@@ -1,10 +1,24 @@
 .main {
   flex: 1;
-  
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+@media(max-width: 550px) {
+  .main {
+    justify-content: center;
+  }
 }
 
 .footer {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  color: darkcyan;
 }
 
 

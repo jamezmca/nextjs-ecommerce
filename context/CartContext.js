@@ -4,10 +4,13 @@ const AppContext = createContext();
 
 export function AppWrapper({ children }) {
   const [products, setProducts] = useState([])
-  console.log(products)
+  const [prices, setPrices] = useState([])
+  console.log(prices)
   let sharedState = {
     products,
-    setProducts
+    setProducts,
+    prices,
+    setPrices
   }
 
   return (
