@@ -29,6 +29,7 @@ export default function Home({ prices }) {
   const { setPrices } = useAppContext()
 
   useEffect(() => {
+    console.log('here')
     setPrices(prices)
   }, [prices])
 
