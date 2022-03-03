@@ -8,7 +8,7 @@ export function AppWrapper({ children }) {
   const sharedState = useMemo(() => {
     return { state, dispatch }
   }, [state, dispatch])
-
+  
   useEffect(() => {
     if (JSON.parse(localStorage.getItem('mg-items'))) {
       dispatch({
