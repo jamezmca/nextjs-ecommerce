@@ -12,7 +12,7 @@ export default function Layout({ children }) {
             </div>
             <footer className={styles.footer}>
                 <a href="#" target="_blank">
-                    <i className="fa-brands fa-linkedin"></i>
+                    <i className="fa-brands fa-instagram"></i>
                 </a>
             </footer>
         </div>

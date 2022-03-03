@@ -50,7 +50,7 @@ export default function Header() {
             </h1>
             <div className='relative cursor-pointer grid place-items-center' onClick={() => setDisplayCheckout(!displayCheckout)}>
                 <i className="fa-solid fa-bag-shopping px-2 py-2 text-xl sm:text-3xl mr-4 transition hover:opacity-60 duration-300"></i>
-                <div className='absolute inset-0 mx-auto top-1.5 h-2 w-2 rounded-full bg-rose-400 z-20'></div>
+                <div className='absolute inset-0 mx-auto top-1.5 h-2 w-2 rounded-full bg-rose-400 z-20' />
 
             </div>
         </nav>
