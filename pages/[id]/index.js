@@ -13,7 +13,7 @@ export default function Description(props) {
     const { id: path } = props
     const { state: { prices } = [] } = useAppContext()
     const product = prices.filter(val => val.id === path.replace('/', ''))[0]
-
+    console.log(product)
     if (product === undefined) { return <div className='pt-40 select-none grid place-items-center'>LOADING...</div> }
     return (
         <div className='mx-auto w-fit flex flex-wrap justify-center md:gap-6'>
