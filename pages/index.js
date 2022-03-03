@@ -35,7 +35,7 @@ export default function Home({ prices }) {
   }, [prices])
 
   return (
-    <div className='flex flex-col min-h-screen relative'>
+    <div className='flex flex-col flex-1'>
       <Head>
         <title>Moonglade Apparel</title>
         <meta name="description" content="Nextjs ecommerce store" />
@@ -50,11 +50,7 @@ export default function Home({ prices }) {
         })}
       </main>
 
-      <footer className={styles.footer}>
-        <a href="#">
-          <i className="fa-brands fa-codepen"></i>
-        </a>
-      </footer>
+   
     </div>
   )
 }

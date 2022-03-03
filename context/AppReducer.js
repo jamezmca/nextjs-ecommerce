@@ -1,14 +1,37 @@
 export const initialState = {
     prices: [],
-    products: []
+    products: {} //[{id: {[size]: quantity}}]
 }
 
 export const AppReducer = (state = initialState, action) => {
     switch (action.type) {
-        case "add_product": {
+        case "add_product": { //receives [[id], [size]]
             return {
                 ...state,
-                products: [...state.products, action.value]
+                products: {
+                    ...state.products,
+                    ...(!(action.value[0] in state.products) ? {
+                        [action.value[0]]: {
+                            [action.value[1]]: 1
+                        }
+                    } : !(action.value[1] in state.products[action.value[0]]) ? {
+                        [action.value[0]]: {
+                            ...state.products[action.value[0]],
+                            [action.value[1]]: 1
+                        }
+                    } : {
+                        [action.value[0]]: {
+                            ...state.products[action.value[0]],
+                            [action.value[1]]: 1 + state.products[action.value[0]][action.value[1]]
+                        }
+                    })
+                }
+            }
+        }
+        case "remove_one": {
+            return {
+                ...state,
+
             }
         }
         case "remove_product": {
