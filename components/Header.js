@@ -90,7 +90,8 @@ export default function Header() {
 
                     })}
                 </div>
-                <button className=' m-1 shadow bg-black text-white font-light text-sm py-2 transition duration-300 hover:opacity-50 select-none'>CHECKOUT</button>
+                <button onClick={checkout}
+                className=' m-1 shadow bg-black text-white font-light text-sm py-2 transition duration-300 hover:opacity-50 select-none'>CHECKOUT</button>
             </div>}
             <h1 onClick={() => Router.push('/')}
                 className={'px-4 py-6 sm:py-14 pl-14 font-normal select-none flex-1 text-center sm:text-4xl cursor-pointer transition hover:opacity-80 ' + ` ${styles.title}`}>
