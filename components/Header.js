@@ -29,18 +29,23 @@ export default function Header() {
     return (
         // <div onClick={checkout}>{products.length}</div>
         <nav className='flex items-center white shadow sticky top-0 relative z-50 bg-white relative'>
-            {displayCheckout && <div ref={modalRef} className='absolute bg-white shadow border border-gray-200 border-solid z-50 top-0 h-screen w-screen sm:w-60 right-0 flex flex-col gap-2'>
+            {displayCheckout && <div ref={modalRef} className='absolute bg-white shadow border border-gray-200 border-solid z-50 top-0 h-screen w-screen sm:w-72 right-0 flex flex-col gap-2 px-2'>
                 <div className='overflow-auto flex-1'>
                     <div className=''>
                         <div className='ml-auto w-fit p-2 cursor-pointer select-none transition duration-300 opacity-50' onClick={() => setDisplayCheckout(false)}>╳</div>
                     </div>
-                    {/* {state.products.map((product, index) => {
-                        console.log(product)
+                    {Object.keys(state.products).map((productId, index) => {
+                        const product = state.prices.find(val => val.id === productId)
+                        const size = ''
+                        const number = ''
                         return <div key={index} className="border-b border-solid border-gray-100 flex justify-between items-center text-xs font-extralight px-2 py-2">
-                            <p className='truncate'>{product.product.name}</p>
+                            <div>
+                                <p className='truncate'>{product.product.name}</p>
+                                <p></p>
+                            </div>
                             <p>${product.unit_amount / 100}</p>
                         </div>
-                    })} */}
+                    })}
                 </div>
                 <button className=' m-1 shadow bg-black text-white font-light text-sm py-2 transition duration-300 hover:opacity-50 select-none'>CHECKOUT</button>
             </div>}
@@ -50,8 +55,7 @@ export default function Header() {
             </h1>
             <div className='relative cursor-pointer grid place-items-center' onClick={() => setDisplayCheckout(!displayCheckout)}>
                 <i className="fa-solid fa-bag-shopping px-2 py-2 text-xl sm:text-3xl mr-4 transition hover:opacity-60 duration-300"></i>
-                <div className='absolute inset-0 mx-auto top-1.5 h-2 w-2 rounded-full bg-rose-400 z-20' />
-
+                {Object.keys(state.products).length > 0 && <div className='absolute inset-0 mx-auto top-1.5 h-2 w-2 rounded-full bg-rose-400 z-20' />}
             </div>
         </nav>
     )
