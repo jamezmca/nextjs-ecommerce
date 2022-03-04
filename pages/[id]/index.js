@@ -23,9 +23,13 @@ export default function Description(props) {
     }
     console.log(size)
     function addToBasket(prod) { //curried function
-        console.log('henry',prod.id)
+        console.log('henry', prod.id)
+
         if (!size) { return }
-        return () => dispatch({ type: 'add_product', value: [prod.id, size] })
+        return () => {
+            setSize(null)
+            dispatch({ type: 'add_product', value: [prod.id, size] })
+        }
     }
 
     return (
